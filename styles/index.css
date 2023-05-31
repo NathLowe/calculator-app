@@ -6,91 +6,96 @@
     font-family: 'league-spartan';
     src: url('./assets/league-spartan.ttf');
 }
+*{
+    transition: all;
+    transition-duration: 150ms;
+}
+body{
+    background: var(--main-background);
+    font-family: 'league-spartan' !important;
+    --main-background: hsl(222, 26%, 31%);
+    --keypad-background: hsl(223, 31%, 20%);
+    --screen-background: hsl(224, 36%, 15%);
 
+    --del-background: hsl(225, 21%, 49%);
+    --del-shadow: hsl(224, 28%, 35%);
+    --equal-background: hsl(6, 63%, 50%);
+    --equal-shadow: hsl(6, 70%, 34%);
+    --key-background: hsl(30, 25%, 89%);
+    --key-shadow: hsl(28, 16%, 65%);
+
+    --key-color: hsl(221, 14%, 31%);
+    --other-color: hsl(0, 0%, 100%);
+}
+
+body.theme2{
+    --main-background: hsl(0, 0%, 90%);
+    --keypad-background: hsl(0, 5%, 81%);
+    --screen-background: hsl(0, 0%, 93%);
+
+    --del-background: hsl(185, 42%, 37%);
+    --del-shadow: hsl(185, 58%, 25%);
+    --equal-background: hsl(25, 98%, 40%);
+    --equal-shadow: hsl(25, 99%, 27%);
+    --key-background: hsl(45, 7%, 89%);
+    --key-shadow: hsl(35, 11%, 61%);
+
+    --key-color: hsl(60, 10%, 19%);
+    --other-color: hsl(0, 0%, 100%);
+}
+
+body.theme3{
+    --main-background: hsl(268, 75%, 9%);
+    --keypad-background: hsl(268, 71%, 12%);
+    --screen-background: hsl(268, 71%, 12%);
+
+    --del-background: hsl(281, 89%, 26%);
+    --del-shadow: hsl(285, 91%, 52%);
+    --equal-background: hsl(176, 100%, 44%);
+    --equal-shadow: hsl(177, 92%, 70%);
+    --key-background: hsl(268, 47%, 21%);
+    --key-shadow: hsl(290, 70%, 36%);
+
+    --key-color: hsl(52, 100%, 62%);
+    --other-color: hsl(0, 0%, 100%);
+}
+
+main{
+    color: var(--other-color);
+}
+h1 a {
+    color: var(--equal-background);
+}
+body.theme2 main, body.theme3 main{
+    color: var(--key-color);
+}
+#result {
+    background-color: var(--screen-background);
+}
+#keys{
+    background-color: var(--keypad-background);
+}
+#theme-toggler{
+    background-color: var(--keypad-background);
+    /* @apply flex items-center -translate-y-1/2 */
+}
+#theme-toggler-ball{
+    background-color: var(--equal-background);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(20%);
+}
+body.theme2 #theme-toggler-ball{
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+body.theme3 #theme-toggler-ball{
+    left: 100%;
+    transform: translateY(-50%) translateX(-120%);
+}
 @layer components{
-    *{
-        transition: all;
-        transition-duration: 150ms;
-    }
-    body{
-        background: var(--main-background);
-        font-family: 'league-spartan' !important;
-        --main-background: hsl(222, 26%, 31%);
-        --keypad-background: hsl(223, 31%, 20%);
-        --screen-background: hsl(224, 36%, 15%);
-
-        --del-background: hsl(225, 21%, 49%);
-        --del-shadow: hsl(224, 28%, 35%);
-        --equal-background: hsl(6, 63%, 50%);
-        --equal-shadow: hsl(6, 70%, 34%);
-        --key-background: hsl(30, 25%, 89%);
-        --key-shadow: hsl(28, 16%, 65%);
-
-        --key-color: hsl(221, 14%, 31%);
-        --other-color: hsl(0, 0%, 100%);
-    }
-    body.theme2{
-        --main-background: hsl(0, 0%, 90%);
-        --keypad-background: hsl(0, 5%, 81%);
-        --screen-background: hsl(0, 0%, 93%);
-
-        --del-background: hsl(185, 42%, 37%);
-        --del-shadow: hsl(185, 58%, 25%);
-        --equal-background: hsl(25, 98%, 40%);
-        --equal-shadow: hsl(25, 99%, 27%);
-        --key-background: hsl(45, 7%, 89%);
-        --key-shadow: hsl(35, 11%, 61%);
-
-        --key-color: hsl(60, 10%, 19%);
-        --other-color: hsl(0, 0%, 100%);
-    }
-    body.theme3{
-        --main-background: hsl(268, 75%, 9%);
-        --keypad-background: hsl(268, 71%, 12%);
-        --screen-background: hsl(268, 71%, 12%);
-
-        --del-background: hsl(281, 89%, 26%);
-        --del-shadow: hsl(285, 91%, 52%);
-        --equal-background: hsl(176, 100%, 44%);
-        --equal-shadow: hsl(177, 92%, 70%);
-        --key-background: hsl(268, 47%, 21%);
-        --key-shadow: hsl(290, 70%, 36%);
-
-        --key-color: hsl(52, 100%, 62%);
-        --other-color: hsl(0, 0%, 100%);
-    }
-
-    main{
-        color: var(--other-color);
-    }
-    body.theme2 main, body.theme3 main{
-        color: var(--key-color);
-    }
-    #result {
-        background-color: var(--screen-background);
-    }
-    #keys{
-        background-color: var(--keypad-background);
-    }
-    #theme-toggler{
-        background-color: var(--keypad-background);
-        /* @apply flex items-center -translate-y-1/2 */
-    }
-    #theme-toggler-ball{
-        background-color: var(--equal-background);
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%) translateX(20%);
-    }
-    body.theme2 #theme-toggler-ball{
-        left: 50%;
-        transform: translateY(-50%) translateX(-50%);
-    }
-    body.theme3 #theme-toggler-ball{
-        left: 100%;
-        transform: translateY(-50%) translateX(-120%);
-    }
+    
     .key{
         box-shadow: inset 0px -0.125rem 1px var(--key-shadow);
         color: var(--key-color);
