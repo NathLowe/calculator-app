@@ -29,7 +29,7 @@ if(themeToggler) {
 }
 
 // Calculator
-let keys = document.querySelectorAll('#keys .key')
+let keys = document.querySelectorAll<HTMLDivElement>('#keys .key')
 let result = document.querySelector('#result')
 let keptValue = 0
 let startOver = false
@@ -110,4 +110,26 @@ keys.forEach((key) => {
             result.innerHTML = new Intl.NumberFormat().format(resultFloat)
         }
     })
+})
+
+// Keyboard press
+window.addEventListener('keydown', e => {
+    const key = e.key.toLowerCase()
+    if(['0','1','2','3','4','5','6','7','8','9','.','+','/','-'].includes(key)){
+        keys.forEach(k => {
+            if(k.innerHTML.toLowerCase() === key) k.click()
+        })
+    }else if(key === 'enter'){
+        keys.forEach(k => {
+            if(k.innerHTML.toLowerCase() === '=') k.click()
+        })
+    }else if(['backspace','del'].includes(key)){
+        keys.forEach(k => {
+            if(k.innerHTML.toLowerCase() === 'del') k.click()
+        })
+    }else if(key === '*'){
+        keys.forEach(k => {
+            if(k.innerHTML.toLowerCase() === 'x') k.click()
+        })
+    }
 })

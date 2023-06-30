@@ -120,3 +120,31 @@ keys.forEach(function (key) {
         }
     });
 });
+// Keyboard press
+window.addEventListener('keydown', function (e) {
+    var key = e.key.toLowerCase();
+    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '+', '/', '-'].includes(key)) {
+        keys.forEach(function (k) {
+            if (k.innerHTML.toLowerCase() === key)
+                k.click();
+        });
+    }
+    else if (key === 'enter') {
+        keys.forEach(function (k) {
+            if (k.innerHTML.toLowerCase() === '=')
+                k.click();
+        });
+    }
+    else if (['backspace', 'del'].includes(key)) {
+        keys.forEach(function (k) {
+            if (k.innerHTML.toLowerCase() === 'del')
+                k.click();
+        });
+    }
+    else if (key === '*') {
+        keys.forEach(function (k) {
+            if (k.innerHTML.toLowerCase() === 'x')
+                k.click();
+        });
+    }
+});
